@@ -6,7 +6,7 @@ import MainLayout from "../layouts/MainLayout.astro";
 const shuffledJokes = jokes.sort(() => Math.random() - 0.5);
 ---
 
-<MainLayout title="😂 Jokes">
+<MainLayout title="😂 Jokes" pathname={Astro.url.pathname}>
     <p class="has-text-centered">
         Take a break and have a laugh with our collection of jokes!
     </p>

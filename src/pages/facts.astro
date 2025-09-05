@@ -7,7 +7,7 @@ import CardCarousel from "../components/CardCarousel.astro";
 const facts = data.sort(() => Math.random() - 0.5);
 ---
 
-<MainLayout title="🤓 Fun Facts">
+<MainLayout title="🤓 Fun Facts" pathname={Astro.url.pathname}>
     <div class="has-text-centered">
         <p>You can never have too many fun facts!</p>
         <p>Ponder these while you're taking a break...</p>

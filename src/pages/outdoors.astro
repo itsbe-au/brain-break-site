@@ -4,7 +4,7 @@ import items from "../content/outdoor.json";
 import MainLayout from "../layouts/MainLayout.astro";
 ---
 
-<MainLayout title="🌳 Outdoor Games">
+<MainLayout title="🌳 Outdoor Games" pathname={Astro.url.pathname}>
     <p class="has-text-centered">
         It's important to get outside and enjoy some fresh air during your
         breaks. Here are some fun outdoor games to try!
