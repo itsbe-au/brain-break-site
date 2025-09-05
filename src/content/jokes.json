@@ -33,5 +33,10 @@
     "id": 7,
     "question": "Why did the giraffe go to the doctor?",
     "answer": "Because it had a long neck!"
+  },
+  {
+    "id": 8,
+    "question": "What's brown and sticky?",
+    "answer": "A stick."
   }
 ]
