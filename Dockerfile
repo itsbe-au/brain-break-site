@@ -1,16 +1,20 @@
-FROM node:alpine
+FROM php:apache
 
-WORKDIR /app
+# Install required PHP extensions
+RUN apt-get update && apt-get install -y \
+    curl \
+    && rm -rf /var/lib/apt/lists/*
 
-# Install http-server globally
-RUN npm install
-RUN npm install -g http-server
+# Set working directory
+WORKDIR /var/www/html
 
-# Copy HTML file
-COPY index.html .
+# Copy application files
+COPY . /var/www/html
 
-# Expose port 8080
-EXPOSE 8080
+# Create cache directory and set permissions
+RUN mkdir -p /var/www/html/cache && \
+    chown -R www-data:www-data /var/www/html && \
+    chmod -R 755 /var/www/html && \
+    chmod -R 777 /var/www/html/cache
 
-# Start the server
-CMD ["http-server", "-p", "8080"]
+EXPOSE 80

@@ -1,0 +1,17 @@
+[
+  {
+    "name": "Paper, Scissors, Rock",
+    "description": "A classic hand game played between two players",
+    "howToPlay": "Players count to three in unison and throw one of three hand signals that correspond to rock, paper, or scissors. Paper covers rock, rock crushes scissors, and scissors cuts paper."
+  },
+  {
+    "name": "Hide and Seek",
+    "description": "A game where players hide and one seeks",
+    "howToPlay": "One player closes their eyes and counts to a predetermined number while the others hide. The seeker then tries to find the hidden players. The last player found becomes the next seeker."
+  },
+  {
+    "name": "Simon Says",
+    "description": "A game of following commands",
+    "howToPlay": "One player takes the role of 'Simon' and gives commands to the other players, who must only follow the commands that begin with 'Simon says'. If a player follows a command that doesn't start with 'Simon says', they are out of the game."
+  }
+]

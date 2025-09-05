@@ -1,0 +1,37 @@
+[
+  {
+    "id": 1,
+    "question": "Why did the tomato turn red?",
+    "answer": "Because it saw the salad dressing!"
+  },
+  {
+    "id": 2,
+    "question": "Why did the chicken cross the road?",
+    "answer": "To get to the other side!"
+  },
+  {
+    "id": 3,
+    "question": "Why did the bear go to the dentist?",
+    "answer": "Because it had a grizzly toothache!"
+  },
+  {
+    "id": 4,
+    "question": "Why did the banana go to the doctor?",
+    "answer": "Because it wasn't peeling well!"
+  },
+  {
+    "id": 5,
+    "question": "Why did the cow go to the doctor?",
+    "answer": "Because it was feeling a little moochy!"
+  },
+  {
+    "id": 6,
+    "question": "Why did the elephant go to the doctor?",
+    "answer": "Because it had a big tummy ache!"
+  },
+  {
+    "id": 7,
+    "question": "Why did the giraffe go to the doctor?",
+    "answer": "Because it had a long neck!"
+  }
+]
