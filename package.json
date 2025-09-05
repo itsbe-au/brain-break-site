@@ -6,9 +6,12 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "watch:css": "sass --watch src/styles/app.scss:public/styles/app.css --no-source-map --style=compressed"
   },
   "dependencies": {
-    "astro": "^5.13.5"
+    "@picocss/pico": "^2.1.1",
+    "astro": "^5.13.5",
+    "bulma": "^1.0.4"
   }
 }

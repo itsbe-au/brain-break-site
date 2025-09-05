@@ -1,0 +1,41 @@
+---
+import Navbar from "./Navbar.astro";
+
+const { title } = Astro.props;
+---
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1, user-scalable=no"
+        />
+        <meta name="generator" content={Astro.generator} />
+        <meta name="color-scheme" content="light dark" />
+        <title>{title} | No Brainer</title>
+        <link rel="stylesheet" href="styles/app.css" />
+        <script src="//unpkg.com/alpinejs" defer></script>
+        <script is:inline src="js/alpine-init.js"></script>
+    </head>
+    <body>
+        <header class="hero">
+            <div class="hero-body">
+                <h1 class="is-size-1">{title}</h1>
+            </div>
+            <Navbar />
+        </header>
+        <main class="container is-fluid">
+            <slot />
+        </main>
+        <footer>
+            <p class="is-size-7 py-3 has-text-centered">
+                🧠 No Brainer - Created by
+                <a href="https://onedaystudios.org.au" target="_blank"
+                    >One Day Studios</a
+                > in 2025.
+            </p>
+        </footer>
+    </body>
+</html>

@@ -1,0 +1,97 @@
+// Set your brand colors
+$primary: #ffbf00;
+$secondary: #ff8000;
+$info: #00d1b2;
+$success: #23d160;
+$warning: #ffdd57;
+$danger: #ff3860;
+$grey-dark: #757763;
+$grey-light: #d0d1cd;
+$grey-lighter: #eff0eb;
+
+// Path to Bulma's sass folder
+@use "../../node_modules/bulma/sass" with (
+    $family-primary: '"Bricolage Grotesque", sans-serif',
+    $grey-dark: $grey-dark,
+    $grey-light: $grey-light,
+    $primary: $primary,
+    $link: $secondary,
+    $control-border-width: 2px,
+    $input-shadow: none
+);
+
+@import url("https://fonts.googleapis.com/css2?family=Barrio&family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Sour+Gummy:ital,wght@0,100..900;1,100..900&display=swap");
+
+$base-font-size: 18px;
+$base-line-height: 1.6;
+
+:root {
+    letter-spacing: -0.03rem;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-weight: bold;
+}
+
+h1 {
+    font-family: "Barrio", "Chalkboard", "Comic Sans MS", cursive;
+    color: darken($primary, 30%);
+    line-height: 0.8em;
+}
+
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: $primary;
+    font-family: "Sour Gummy", "Comic Sans MS", cursive;
+}
+
+h1 {
+    font-size: $base-font-size * 3;
+    text-transform: uppercase;
+}
+
+.centered {
+    text-align: center;
+}
+
+header {
+    text-align: center;
+    background-color: lighten($primary, 40%);
+}
+
+main {
+    flex: 1;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+
+footer {
+    background-color: lighten($primary, 40%);
+}
+
+#wheel-wrapper {
+    position: relative;
+    // Make the wheel take up 90% of the screen's width, but no more than 600px
+    width: 90vw;
+    max-width: 600px;
+
+    // Use the aspect-ratio property to make the height equal to the width
+    aspect-ratio: 1 / 1;
+
+    // Center the wheel container on the page
+    margin: 1rem auto;
+}

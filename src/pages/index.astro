@@ -1,16 +1,18 @@
 ---
-
+import Wheel from "../components/Wheel.astro";
+import { items } from "../content/items.js";
+import MainLayout from "../layouts/MainLayout.astro";
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<MainLayout title="🧠 No Brainer">
+    <div class="has-text-centered">
+        <h2 class="is-size-3 py-3">Take a brain break!</h2>
+        <p class="py-3">
+            It's important to take regular breaks during work or study sessions.
+        </p>
+        <p class="py-3">
+            Sometimes, it can be hard to decide what to do during these breaks.
+            That's where the Brain Break site comes in!
+        </p>
+    </div>
+</MainLayout>

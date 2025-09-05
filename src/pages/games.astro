@@ -1,0 +1,12 @@
+---
+import GameWheel from "../components/Wheel.astro";
+import { items } from "../content/items.js";
+import MainLayout from "../layouts/MainLayout.astro";
+---
+
+<MainLayout title="🎮 Online Games">
+    <p class="has-text-centered">
+        Feeling bored? Take a break and play some fun online games that we made.
+    </p>
+    <GameWheel items={items} />
+</MainLayout>

@@ -1,0 +1,21 @@
+---
+const pages = [
+    { name: "Home", href: "/" },
+    { name: "Online Games", href: "/games" },
+    { name: "Jokes", href: "/jokes" },
+    { name: "Facts", href: "/facts" },
+    { name: "Outdoors", href: "/outdoors" },
+];
+---
+
+<nav class="tabs is-small is-centered is-boxed">
+    <ul>
+        {
+            pages.map((page) => (
+                <li class={page.href === Astro.url.pathname ? "is-active" : ""}>
+                    <a href={page.href}>{page.name}</a>
+                </li>
+            ))
+        }
+    </ul>
+</nav>
