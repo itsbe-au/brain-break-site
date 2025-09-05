@@ -9,6 +9,7 @@
     "watch:css": "sass --watch src/styles/app.scss:public/styles/app.css --no-source-map --style=compressed"
   },
   "dependencies": {
+    "@astrojs/vercel": "^8.2.7",
     "astro": "^5.2.5"
   },
   "devDependencies": {

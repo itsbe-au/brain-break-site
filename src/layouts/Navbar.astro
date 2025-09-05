@@ -1,4 +1,5 @@
 ---
+const { pathname = "/" } = Astro.props;
 const pages = [
     { name: "Online Games", href: "/games" },
     { name: "Jokes", href: "/jokes" },
@@ -11,7 +12,7 @@ const pages = [
     <ul>
         {
             pages.map((page) => (
-                <li class={page.href === Astro.url.pathname ? "is-active" : ""}>
+                <li class={page.href === pathname ? "is-active" : ""}>
                     <a href={page.href}>{page.name}</a>
                 </li>
             ))
