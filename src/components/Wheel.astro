@@ -65,7 +65,7 @@ const { items } = Astro.props;
     </div> -->
 </div>
 
-<script type="module" define:vars={{ items }}>
+<script type="module" is:inline define:vars={{ items }}>
     import { Wheel } from "https://cdn.jsdelivr.net/npm/spin-wheel@5.0.2/dist/spin-wheel-esm.js";
 
     export async function loadImages(images = []) {
@@ -87,22 +87,23 @@ const { items } = Astro.props;
     const overlayImage = new Image();
 
     // Set image sources
-    image.src = "example-0-image.svg";
-    overlayImage.src = "example-0-overlay.svg";
+    image.src = "wheel-centre.svg";
+    overlayImage.src = "wheel-outline.svg";
 
     // Use your loadImages function to wait for them to load
     await loadImages([image, overlayImage]);
     const props = {
-        name: "Workout",
         items: items,
         image: image,
         overlayImage: overlayImage,
         radius: 0.84,
-        itemLabelFont: `"Comic Sans MS", "Arial", sans-serif`,
-        itemLabelFontSizeMax: 48,
-        itemLabelRadius: 0.28,
-        itemLabelAlign: "left",
+        itemLabelAlign: "right",
         itemLabelColors: ["#fff"],
+        itemLabelRadius: 0.9,
+        itemLabelRadiusMax: 0.4,
+        itemLabelRotation: 0,
+        // Explicitly set the device pixel ratio for sharp rendering on all screens.
+        devicePixelRatio: window.devicePixelRatio || 1,
         itemBackgroundColors: [
             "#ffc93c",
             "#66bfbf",

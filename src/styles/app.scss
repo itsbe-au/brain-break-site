@@ -83,15 +83,21 @@ footer {
     background-color: lighten($primary, 40%);
 }
 
-#wheel-wrapper {
-    position: relative;
-    // Make the wheel take up 90% of the screen's width, but no more than 600px
-    width: 90vw;
-    max-width: 600px;
+@media (prefers-color-scheme: dark) {
+    header,
+    footer {
+        background-color: darken($primary, 40%);
+    }
 
-    // Use the aspect-ratio property to make the height equal to the width
-    aspect-ratio: 1 / 1;
+    h1 {
+        color: lighten($primary, 20%);
+    }
 
-    // Center the wheel container on the page
-    margin: 1rem auto;
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        color: lighten($primary, 10%);
+    }
 }
