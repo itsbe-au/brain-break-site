@@ -8,6 +8,6 @@ document.addEventListener("alpine:init", () => {
     closeModal() {
       this.showResultModal = false;
       this.selectedItem = null;
-    }
+    },
   });
 });

@@ -1,37 +1,26 @@
 [
   {
-    "id": 1,
-    "question": "Why did the tomato turn red?",
-    "answer": "Because it saw the salad dressing!"
+    "question": "Mum told me you couldn't drive spaghetti.",
+    "answer": "You should have seen the look on her face as I drove pasta!"
   },
   {
-    "id": 2,
-    "question": "Why did the chicken cross the road?",
-    "answer": "To get to the other side!"
+    "question": "When I said I wanted to be a comedian, everyone laughed.",
+    "answer": "Well, no-one's laughing now!"
   },
   {
-    "id": 3,
-    "question": "Why did the bear go to the dentist?",
-    "answer": "Because it had a grizzly toothache!"
+    "question": "What do you call a fake noodle?",
+    "answer": "An impasta!"
   },
   {
-    "id": 4,
     "question": "Why did the banana go to the doctor?",
     "answer": "Because it wasn't peeling well!"
   },
   {
-    "id": 5,
-    "question": "Why did the cow go to the doctor?",
-    "answer": "Because it was feeling a little moochy!"
+    "question": "Did you hear about the cheese factory that exploded?",
+    "answer": "There was de-brie everywhere."
   },
   {
-    "id": 6,
-    "question": "Why did the elephant go to the doctor?",
-    "answer": "Because it had a big tummy ache!"
-  },
-  {
-    "id": 7,
-    "question": "Why did the giraffe go to the doctor?",
-    "answer": "Because it had a long neck!"
+    "question": "Did you hear about the restaurant on the moon?",
+    "answer": "Great food, no atmosphere!"
   }
 ]

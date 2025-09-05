@@ -1,11 +1,14 @@
 ---
-import GameWheel from "../components/Wheel.astro";
-import { items } from "../content/items.js";
+import CardCarousel from "../components/CardCarousel.astro";
+import jokes from "../content/jokes.json";
 import MainLayout from "../layouts/MainLayout.astro";
+
+const shuffledJokes = jokes.sort(() => Math.random() - 0.5);
 ---
 
 <MainLayout title="😂 Jokes">
     <p class="has-text-centered">
         Take a break and have a laugh with our collection of jokes!
     </p>
+    <CardCarousel data={shuffledJokes} buttonText="🎲 Another Joke" />
 </MainLayout>

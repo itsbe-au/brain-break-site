@@ -1,25 +1,16 @@
 ---
-import GameWheel from "../components/Wheel.astro";
-import { items } from "../content/items.js";
 import MainLayout from "../layouts/MainLayout.astro";
+import data from "../content/facts.json";
+import CardCarousel from "../components/CardCarousel.astro";
 
-import facts from "../content/facts.json";
+// Get the facts and shuffle them for a random order on each page load
+const facts = data.sort(() => Math.random() - 0.5);
 ---
 
-<MainLayout title="🤓 Facts">
-    <p class="has-text-centered">
-        You can never have too many facts! Here are some interesting ones to
-        ponder during your break.
-    </p>
-    <div class="columns is-multiline is-centered my-5">
-        {
-            facts.map((fact) => (
-                <div class="column is-full-mobile is-half-tablet is-one-third-desktop">
-                    <div class="box has-text-centered">
-                        <p class="is-size-5">{fact}</p>
-                    </div>
-                </div>
-            ))
-        }
+<MainLayout title="🤓 Fun Facts">
+    <div class="has-text-centered">
+        <p>You can never have too many fun facts!</p>
+        <p>Ponder these while you're taking a break...</p>
     </div>
+    <CardCarousel data={facts} buttonText="🎲 Another Fact" />
 </MainLayout>

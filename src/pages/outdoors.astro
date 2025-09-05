@@ -1,6 +1,6 @@
 ---
-import GameWheel from "../components/Wheel.astro";
-import { items } from "../content/items.js";
+import OutdoorWheel from "../components/OutdoorWheel.astro";
+import items from "../content/outdoor.json";
 import MainLayout from "../layouts/MainLayout.astro";
 ---
 
@@ -13,4 +13,5 @@ import MainLayout from "../layouts/MainLayout.astro";
         Whether you're looking for a quick solo activity or a fun group game,
         we've got you covered.
     </p>
+    <OutdoorWheel items={items} />
 </MainLayout>

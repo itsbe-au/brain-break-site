@@ -31,19 +31,7 @@ items.forEach((item: any) => {
                     @click="$store.wheel.closeModal()"></button>
             </header>
             <section class="modal-card-body">
-                <!-- The iframe is now inside the modal body -->
-                <template x-if="$store.wheel.selectedItem">
-                    <div
-                        style="position:relative;height:0;padding-bottom:117.6%;overflow:hidden;"
-                    >
-                        <iframe
-                            style="position:absolute;top:0;left:0;width:100%;height:100%;"
-                            :src="$store.wheel.selectedItem.url"
-                            allowfullscreen="allowfullscreen"
-                            sandbox="allow-popups allow-forms allow-scripts allow-same-origin"
-                            frameborder="0"></iframe>
-                    </div>
-                </template>
+                <p x-text="$store.wheel.selectedItem.description"></p>
             </section>
         </div>
     </div>
@@ -96,6 +84,15 @@ items.forEach((item: any) => {
             "#43658b",
             "#ed6663",
             "#d54062",
+            "#888d2f",
+            "#4caf50",
+            "#9c27b0",
+            "#ff9800",
+            "#2196f3",
+            "#009688",
+            "#e91e63",
+            "#8bc34a",
+            "#795548",
         ],
         rotationSpeedMax: 500,
         rotationResistance: -100,
@@ -126,10 +123,12 @@ items.forEach((item: any) => {
 
         Alpine.store("wheel").selectedItem = {
             name: item.name,
-            url: item.url,
+            description: item.description,
         };
         Alpine.store("wheel").isSpinning = false;
         Alpine.store("wheel").showResultModal = true;
-        console.log(`Selected item: ${item.name}, URL: ${item.url}`);
+        console.log(
+            `Selected item: ${item.name}, description: ${item.description}`,
+        );
     };
 </script>

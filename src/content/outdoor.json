@@ -1,17 +1,34 @@
 [
   {
-    "name": "Paper, Scissors, Rock",
-    "description": "A classic hand game played between two players",
-    "howToPlay": "Players count to three in unison and throw one of three hand signals that correspond to rock, paper, or scissors. Paper covers rock, rock crushes scissors, and scissors cuts paper."
+    "name": "Broken Windows",
+    "description": "You don't break windows, if that's what you were thinking!"
   },
   {
-    "name": "Hide and Seek",
-    "description": "A game where players hide and one seeks",
-    "howToPlay": "One player closes their eyes and counts to a predetermined number while the others hide. The seeker then tries to find the hidden players. The last player found becomes the next seeker."
+    "name": "Golden Child",
+    "description": "A game where you play as a golden child"
   },
   {
-    "name": "Simon Says",
-    "description": "A game of following commands",
-    "howToPlay": "One player takes the role of 'Simon' and gives commands to the other players, who must only follow the commands that begin with 'Simon says'. If a player follows a command that doesn't start with 'Simon says', they are out of the game."
+    "name": "Gang Up",
+    "description": "A game where players work together to achieve a common goal"
+  },
+  {
+    "name": "Headbutt Catch Numbered Basketball",
+    "description": "(I have never played this game)"
+  },
+  {
+    "name": "40 40 Homes",
+    "description": "A game involving homes. 40 of them, to be exact."
+  },
+  {
+    "name": "Dodgeball",
+    "description": "A game where players try to hit each other with a ball"
+  },
+  {
+    "name": "Level Tag",
+    "description": "A game where players try to tag each other while avoiding obstacles"
+  },
+  {
+    "name": "Elimination",
+    "description": "A game where players try to eliminate each other"
   }
 ]

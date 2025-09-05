@@ -1,0 +1,64 @@
+---
+const { data, buttonText } = Astro.props;
+---
+
+<div class="fact-carousel-container">
+    <div class="my-slider">
+        {
+            data.map((item) => (
+                <div class="slide">
+                    <div class="fact-content">
+                        <div class="has-text-centered">
+                            {typeof item === "string" ? (
+                                <p class="is-size-4">{item}</p>
+                            ) : item &&
+                              typeof item === "object" &&
+                              item.question &&
+                              item.answer ? (
+                                <div>
+                                    <h3 class="is-size-4 has-text-weight-bold mb-3">
+                                        {item.question}
+                                    </h3>
+                                    <p>{item.answer}</p>
+                                </div>
+                            ) : (
+                                <p class="is-size-4">{item}</p>
+                            )}
+                        </div>
+                    </div>
+                </div>
+            ))
+        }
+    </div>
+    <div class="carousel-controls">
+        <button id="next-fact-btn" class="button is-primary is-large">
+            {buttonText}
+        </button>
+    </div>
+</div>
+
+<script is:inline>
+    document.addEventListener("DOMContentLoaded", () => {
+        const slides = document.querySelectorAll(".my-slider .slide");
+        const nextButton = document.getElementById("next-fact-btn");
+        let currentSlide = 0;
+
+        // Hide all slides except the first one
+        slides.forEach((slide, index) => {
+            slide.style.display = index === 0 ? "flex" : "none";
+        });
+
+        if (nextButton && slides.length > 0) {
+            nextButton.addEventListener("click", () => {
+                // Hide current slide
+                slides[currentSlide].style.display = "none";
+
+                // Move to next slide (loop back to 0 if at end)
+                currentSlide = (currentSlide + 1) % slides.length;
+
+                // Show new current slide
+                slides[currentSlide].style.display = "flex";
+            });
+        }
+    });
+</script>
