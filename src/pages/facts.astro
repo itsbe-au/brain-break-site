@@ -2,6 +2,8 @@
 import GameWheel from "../components/Wheel.astro";
 import { items } from "../content/items.js";
 import MainLayout from "../layouts/MainLayout.astro";
+
+import facts from "../content/facts.json";
 ---
 
 <MainLayout title="🤓 Facts">
@@ -9,4 +11,15 @@ import MainLayout from "../layouts/MainLayout.astro";
         You can never have too many facts! Here are some interesting ones to
         ponder during your break.
     </p>
+    <div class="columns is-multiline is-centered my-5">
+        {
+            facts.map((fact) => (
+                <div class="column is-full-mobile is-half-tablet is-one-third-desktop">
+                    <div class="box has-text-centered">
+                        <p class="is-size-5">{fact}</p>
+                    </div>
+                </div>
+            ))
+        }
+    </div>
 </MainLayout>
