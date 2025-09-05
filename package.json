@@ -1,6 +1,5 @@
 {
   "name": "st-patricks-brain-break",
-  "type": "module",
   "version": "0.0.1",
   "scripts": {
     "dev": "astro dev",
@@ -10,10 +9,11 @@
     "watch:css": "sass --watch src/styles/app.scss:public/styles/app.css --no-source-map --style=compressed"
   },
   "dependencies": {
-    "@astrojs/netlify": "^6.5.9",
-    "@astrojs/vercel": "^8.2.7",
-    "@picocss/pico": "^2.1.1",
-    "astro": "^5.13.5",
-    "bulma": "^1.0.4"
+    "astro": "^5.2.5"
+  },
+  "devDependencies": {
+    "sass": "^1.66.1",
+    "bulma": "^1.0.4",
+    "@picocss/pico": "^2.1.1"
   }
 }
