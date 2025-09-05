@@ -11,11 +11,16 @@ const pages = [
 <nav class="tabs is-centered is-boxed">
     <ul>
         {
-            pages.map((page) => (
-                <li class={page.href === pathname ? "is-active" : ""}>
-                    <a href={page.href}>{page.name}</a>
-                </li>
-            ))
+            pages.map((page) => {
+                // Normalize both href and pathname by removing trailing slashes
+                const normalize = (str) => str.replace(/\/$/, "");
+                const isActive = normalize(page.href) === normalize(pathname);
+                return (
+                    <li class={isActive ? "is-active" : ""}>
+                        <a href={page.href}>{page.name}</a>
+                    </li>
+                );
+            })
         }
     </ul>
 </nav>
