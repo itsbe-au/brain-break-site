@@ -12,8 +12,12 @@
     "description": "A game where players work together to achieve a common goal"
   },
   {
-    "name": "Headbutt Catch Numbered Basketball",
-    "description": "(I have never played this game)"
+    "name": "Headbutt",
+    "description": "Headbutt things. Don't hurt yourself doing it."
+  },
+  {
+    "name": "Catch",
+    "description": "Somebody throws. Somebody else catches. You win if you catch the ball."
   },
   {
     "name": "40 40 Homes",

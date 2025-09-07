@@ -5,131 +5,168 @@ items.forEach((item: any) => {
 });
 ---
 
-<div x-data>
-    <div class="has-text-centered py-3">
-        <button
-            class="button is-primary"
-            id="spin-button"
-            :disabled="$store.wheel.isSpinning">Spin the wheel!</button
-        >
-    </div>
+<div x-data="{ showList: false }">
+    <div class="wheel-component" data-items={JSON.stringify(items)}>
+        <div class="has-text-centered py-3">
+            <button
+                class="button is-primary"
+                id="spin-button"
+                :disabled="$store.wheel.isSpinning">Spin the wheel!</button
+            >
+        </div>
 
-    <div id="wheel-wrapper"></div>
+        <div id="wheel-wrapper"></div>
 
-    <div class="modal" :class="{ 'is-active': $store.wheel.showResultModal }">
-        <div class="modal-background"></div>
-        <div class="modal-card">
-            <header class="modal-card-head">
-                <h3
-                    class="modal-card-title"
-                    x-text="$store.wheel.selectedItem?.name || 'Result'"
-                >
-                </h3>
-                <button
-                    class="delete"
-                    aria-label="close"
-                    @click="$store.wheel.closeModal()"></button>
-            </header>
-            <section class="modal-card-body">
-                <!-- The iframe is now inside the modal body -->
-                <template x-if="$store.wheel.selectedItem">
+        <p class="has-text-centered">Or pick from the list...</p>
+
+        <div class="grid list-view">
+            {
+                items.map((item) => (
                     <div
-                        style="position:relative;height:0;padding-bottom:117.6%;overflow:hidden;"
+                        class="cell has-text-primary-invert has-background-primary-light p-4 has-radius-normal is-clickable"
+                        @click={`$store.wheel.selectedItem = ${JSON.stringify({ name: item.name, url: item.url })}; $store.wheel.showResultModal = true`}
                     >
-                        <iframe
-                            style="position:absolute;top:0;left:0;width:100%;height:100%;"
-                            :src="$store.wheel.selectedItem.url"
-                            allowfullscreen="allowfullscreen"
-                            sandbox="allow-popups allow-forms allow-scripts allow-same-origin"
-                            frameborder="0"></iframe>
+                        {item.label}
                     </div>
-                </template>
-            </section>
+                ))
+            }
+        </div>
+
+        <div
+            class="modal"
+            :class="{ 'is-active': $store.wheel.showResultModal }"
+        >
+            <div class="modal-background"></div>
+            <div class="modal-card">
+                <header class="modal-card-head">
+                    <h3
+                        class="modal-card-title"
+                        x-text="$store.wheel.selectedItem?.name || 'Result'"
+                    >
+                    </h3>
+                    <button
+                        class="delete"
+                        aria-label="close"
+                        @click="$store.wheel.closeModal()"></button>
+                </header>
+                <section class="modal-card-body">
+                    <template x-if="$store.wheel.selectedItem">
+                        <div
+                            style="position:relative;height:0;padding-bottom:117.6%;overflow:hidden;"
+                        >
+                            <iframe
+                                style="position:absolute;top:0;left:0;width:100%;height:100%;"
+                                :src="$store.wheel.selectedItem.url"
+                                allowfullscreen="allowfullscreen"
+                                sandbox="allow-popups allow-forms allow-scripts allow-same-origin"
+                                frameborder="0"></iframe>
+                        </div>
+                    </template>
+                </section>
+                <section class="modal-card-foot has-text-centered">
+                    <button
+                        class="button is-primary"
+                        @click="$store.wheel.closeModal()"
+                    >
+                        Close
+                    </button>
+                </section>
+            </div>
         </div>
     </div>
 </div>
 
-<script type="module" is:inline define:vars={{ items }}>
+<script>
     import { Wheel } from "https://cdn.jsdelivr.net/npm/spin-wheel@5.0.2/dist/spin-wheel-esm.js";
+    import { spinSpeed, loadImages, loadFonts } from "@/utils/wheelUtils.js";
 
-    export async function loadImages(images = []) {
-        const promises = [];
-
-        for (const img of images) {
-            if (img instanceof HTMLImageElement) promises.push(img.decode());
-        }
-
-        try {
-            await Promise.all(promises);
-        } catch (error) {
-            throw new Error("An image could not be loaded");
-        }
-    }
-
-    // Create image elements
-    const image = new Image();
-    const overlayImage = new Image();
-
-    // Set image sources
-    image.src = "wheel-centre.svg";
-    overlayImage.src = "wheel-outline.svg";
-
-    // Use your loadImages function to wait for them to load
-    await loadImages([image, overlayImage]);
-    const props = {
-        items: items,
-        image: image,
-        overlayImage: overlayImage,
-        radius: 0.84,
-        itemLabelAlign: "right",
-        itemLabelColors: ["#fff"],
-        itemLabelRadius: 0.9,
-        itemLabelRadiusMax: 0.4,
-        itemLabelRotation: 0,
-        // Explicitly set the device pixel ratio for sharp rendering on all screens.
-        devicePixelRatio: window.devicePixelRatio || 1,
-        itemBackgroundColors: [
-            "#ffc93c",
-            "#66bfbf",
-            "#a2d5f2",
-            "#515070",
-            "#43658b",
-            "#ed6663",
-            "#d54062",
-        ],
-        rotationSpeedMax: 500,
-        rotationResistance: -100,
-        lineWidth: 1,
-        lineColor: "#fff",
+    type Item = {
+        name: string;
+        url: string;
+        label: string;
     };
 
-    let container = document.querySelector("#wheel-wrapper");
-    let result = document.querySelector("#result");
-
-    const wheel = new Wheel(container, props);
-
-    document.querySelector("#spin-button").addEventListener("click", () => {
-        if (!Alpine.store("wheel").isSpinning) {
-            Alpine.store("wheel").closeModal();
-            wheel.spin(Math.random() * 5000 + 3000);
+    const initWheel = async () => {
+        // Find the component's root element and parse the data
+        const container =
+            document.querySelector<HTMLElement>(".wheel-component");
+        if (!container || !container.dataset.items) {
+            console.error("Wheel component container or data not found.");
+            return;
         }
-    });
 
-    wheel.onSpin = (event) => {
-        console.log("Spin started", event);
-        Alpine.store("wheel").isSpinning = true;
-        Alpine.store("wheel").selectedItem = null;
-    };
+        await loadFonts(["Chewy"]);
 
-    wheel.onRest = (event) => {
-        let item = props.items[event.currentIndex];
+        const items: Item[] = JSON.parse(container.dataset.items);
 
-        Alpine.store("wheel").selectedItem = {
-            name: item.name,
-            url: item.url,
+        // Create image elements
+        const image = new Image();
+        const overlayImage = new Image();
+
+        // Set image sources
+        image.src = "/wheel-centre.svg";
+        overlayImage.src = "/wheel-outline.svg";
+
+        // Use your loadImages function to wait for them to load
+        await loadImages([image, overlayImage]);
+        const props = {
+            items: items,
+            image: image,
+            overlayImage: overlayImage,
+            radius: 0.84,
+            itemLabelAlign: "right",
+            itemLabelColors: ["#fff"],
+            itemLabelRadius: 0.9,
+            itemLabelRadiusMax: 0.3,
+            itemLabelFont: "Chewy",
+            itemBackgroundColors: [
+                "#ffc93c",
+                "#66bfbf",
+                "#a2d5f2",
+                "#515070",
+                "#43658b",
+                "#ed6663",
+                "#d54062",
+            ],
+            rotationSpeedMax: 500,
+            rotationResistance: -100,
+            lineWidth: 3,
+            lineColor: "#fff",
         };
-        Alpine.store("wheel").isSpinning = false;
-        Alpine.store("wheel").showResultModal = true;
-        console.log(`Selected item: ${item.name}, URL: ${item.url}`);
+
+        const wheelWrapper = container.querySelector("#wheel-wrapper");
+        if (!wheelWrapper) {
+            console.error("#wheel-wrapper not found");
+            return;
+        }
+        const wheel = new Wheel(wheelWrapper, props);
+
+        const spinButton =
+            container.querySelector<HTMLButtonElement>("#spin-button");
+        if (spinButton) {
+            spinButton.addEventListener("click", () => {
+                if (!Alpine.store("wheel").isSpinning) {
+                    Alpine.store("wheel").closeModal();
+                    wheel.spin(spinSpeed(3000, 8000));
+                }
+            });
+        }
+
+        wheel.onSpin = () => {
+            Alpine.store("wheel").isSpinning = true;
+            Alpine.store("wheel").selectedItem = null;
+        };
+
+        wheel.onRest = (event: any) => {
+            const item = props.items[event.currentIndex];
+            Alpine.store("wheel").selectedItem = {
+                name: item.name,
+                url: item.url,
+            };
+            Alpine.store("wheel").isSpinning = false;
+            Alpine.store("wheel").showResultModal = true;
+        };
     };
+
+    initWheel();
 </script>
