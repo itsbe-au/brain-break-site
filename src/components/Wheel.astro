@@ -141,6 +141,13 @@ items.forEach((item: any) => {
         }
         const wheel = new Wheel(wheelWrapper, props);
 
+        // Force resize for Chrome compatibility
+        setTimeout(() => {
+            if (wheel && wheel.resize) {
+                wheel.resize();
+            }
+        }, 100);
+
         const spinButton =
             container.querySelector<HTMLButtonElement>("#spin-button");
         if (spinButton) {
