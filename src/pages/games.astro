@@ -1,12 +1,22 @@
 ---
 import GameWheel from "../components/Wheel.astro";
 import MainLayout from "../layouts/MainLayout.astro";
-import items from "../content/online-games.json";
+// import items from "../content/online-games.json";
+
+import type { SanityDocument } from "@sanity/client";
+import {sanityClient} from 'sanity:client';
+
+const GAMES_QUERY = `*[
+  _type == "onlineGame"
+]`;
+
+// Get the jokes and shuffle them for a random order on each page load
+const data = await sanityClient.fetch<SanityDocument[]>(GAMES_QUERY);
 ---
 
 <MainLayout title="🎮 Online Games" pathname={Astro.url.pathname}>
     <p class="has-text-centered">
         Feeling bored? Take a break and play some fun online games.
     </p>
-    <GameWheel items={items} />
+    <GameWheel items={data} />
 </MainLayout>

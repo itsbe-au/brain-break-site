@@ -1,17 +1,21 @@
 [
   {
+    "_type": "onlineGame",
     "name": "Square Wars",
     "url": "https://arcade.makecode.com/01641-86661-96897-78714"
   },
   {
+    "_type": "onlineGame",
     "name": "Space in Breakout",
     "url": "https://arcade.makecode.com/68957-11475-53096-25017"
   },
   {
+    "_type": "onlineGame",
     "name": "Galaxy Invaders",
     "url": "https://arcade.makecode.com/44999-41585-49075-61041"
   },
   {
+    "_type": "onlineGame",
     "name": "Duckling's Taco Quest",
     "url": "https://arcade.makecode.com/---run?id=_hYU6CTgEwfzw"
   }

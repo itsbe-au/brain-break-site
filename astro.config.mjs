@@ -3,7 +3,16 @@ import { defineConfig } from "astro/config";
 
 import vercel from "@astrojs/vercel";
 
+import sanity from "@sanity/astro";
+
 // https://astro.build/config
 export default defineConfig({
-  adapter: vercel()
+  adapter: vercel(),
+  integrations: [
+    sanity({
+      projectId: "dgo6zlhr",
+      dataset: "production",
+      useCdn: false,
+    }),
+  ],
 });

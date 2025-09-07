@@ -1,10 +1,17 @@
 ---
 import MainLayout from "../layouts/MainLayout.astro";
-import data from "../content/facts.json";
+// import data from "../content/facts.json";
 import CardCarousel from "../components/CardCarousel.astro";
 
+import type {SanityDocument} from '@sanity/client';
+import {sanityClient} from 'sanity:client';
+
+const FACTS_QUERY = `*[
+  _type == "fact"
+]`;
+
 // Get the facts and shuffle them for a random order on each page load
-const facts = data.sort(() => Math.random() - 0.5);
+const data = await sanityClient.fetch<SanityDocument[]>(FACTS_QUERY);
 ---
 
 <MainLayout title="🤓 Fun Facts" pathname={Astro.url.pathname}>
@@ -12,5 +19,5 @@ const facts = data.sort(() => Math.random() - 0.5);
         <p>You can never have too many fun facts!</p>
         <p>Ponder these while you're taking a break...</p>
     </div>
-    <CardCarousel data={facts} buttonText="🎲 Another Fact" />
+    <CardCarousel data={data.map(fact => fact.fact)} buttonText="🎲 Another Fact" />
 </MainLayout>
