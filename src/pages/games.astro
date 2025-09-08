@@ -16,7 +16,7 @@ const data = await sanityClient.fetch<SanityDocument[]>(GAMES_QUERY);
 
 <MainLayout title="🎮 Online Games" pathname={Astro.url.pathname}>
     <p class="has-text-centered">
-        Feeling bored? Take a break and play some fun online games.
+        Are you feeling bored? Take a break and play some fun online games.
     </p>
     <GameWheel items={data} />
 </MainLayout>
